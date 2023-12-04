@@ -1,0 +1,43 @@
+#set par(justify: true)
+
+#align(center, text(17pt)[
+  *Advancement of Machine Learning in Motion Matching for Gameplay Animation.*
+])
+
+#align(center)[
+  Cheng Yi Heng (Nixon) \
+  Voxell Technologies \
+  #link("mailto:voxell.technologies@gmail.com")
+]
+
+#align(center)[
+  *Abstract* \
+  #lorem(80)
+]
+
+*Keywords:* Animation, Neural Networks, Motion Matching
+
+// #show: rest => columns(2, rest)
+
+= Introduction
+#lorem(10)
+
+= Problem Statement
+#lorem(20)
+
+= Research Aims
+#lorem(10)
+
+= Research Questions and Objectives
+#lorem(20)
+
+= Research Significance
+Q1: How does motion matching contribute to the enhancement of character animation in video games. @deep-phase
+
+= Proposed System Overview
+#lorem(20)
+
+= Conclusion
+#lorem(10)
+
+#bibliography("citation.bib", title: "References", full: true, style: "apa")
