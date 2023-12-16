@@ -47,7 +47,8 @@
 
 #title_section[Abstract]
 #content_section[
-  Neural networks has proven to be capable of solving a wide variety of complex tasks. This leads to the natural evolution of the animation industry to utilize the enormous learning capabilities of neural networks for generating dynamic animation in real-time. In this article, we will take a look at a variety of deep learning approaches towards dynamic real-time animation while evaluating their strengths and weaknesses.
+  Neural networks has proven to be capable of solving a wide variety of complex tasks. This leads to the natural evolution of the animation industry to utilize the enormous learning capabilities of neural networks for generating dynamic animation in real-time. In this article, we will take a look at a variety of deep learning approaches towards dynamic real-time animation. We systematically evaluate the efficacy of these methods by considering their strengths, limitations, and novel contributions, as well as performing a comparison based on their evaluation results.
+// TODO: Conclusion
 ]
 
 #content_section[*Keywords:* Animation, Neural Networks, Motion Matching]
