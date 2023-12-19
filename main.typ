@@ -68,7 +68,7 @@ Interactive character animations are typically carried out through skeletal moti
 
 Relying soley on manual animation authoring can be extremely inefficient. Motion capture was widely used during the process of animation authoring. Motion capture generates animations by tracking and recording moving objects in the physical space @menolotto2020motion. The raw data from motion capture will then be cleaned and refined by animators before it is being used in production. In addition, inverse kinematics can also be used to generate runtime animation layering such as orienting the head towards an interest point or positioning the hands on an object correctly @rose2001artist.
 
-Runtime usage of animation is normally done using some form of state machine where developers were tasked to manually assign different animations to different states. This is done such that the character can react accordingly to different scenarios that may happen during runtime. To address this problem, motion matching was proposed by #cite(<buttner2015motion>, form: "prose"), which opens the possibility of using unstructured animation data. This method performs a search from a large database to find an animation sequence that best fit the current context, namely, the current pose and the current trajectory of the character.
+Runtime usage of animation is normally done using some form of state machine where developers were tasked to manually map different states to their desired animations. This is done such that the character can react accordingly to different scenarios that may happen during runtime. To address this problem, motion matching was proposed by #cite(<buttner2015motion>, form: "prose"), which opens the possibility of using unstructured animation data. This method performs a search from a large database to find an animation sequence that best fit the current context, namely, the current pose and the current trajectory of the character.
 
 = Problem Statement
 
@@ -76,6 +76,7 @@ Runtime usage of animation is normally done using some form of state machine whe
 1. Traditional state machine approach is very manual. Tedious for artists to craft a well made animation.
 2. Motion capture raw data is messy. Cleaning them up into a seamless loop cycle may take up alot of time.
 3. Motion matching only search for existing data, unable to perform seamless transition if there is lacking of data. Fixing this issue results in using a large database which fills up the memory, and also takes up more time for animation lookup.
+4. In between transitions of different animation sequences still relies on simple blending.
 */
 The traditional approach of animation authoring for real-time interactive scenarios consists of the following steps:
 
