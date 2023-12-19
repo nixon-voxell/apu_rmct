@@ -1,6 +1,6 @@
 // Global settings
 #set page(paper: "a4")
-#set par(justify: true)
+#set par(justify: true, first-line-indent: 16pt)
 #set text(
   font: ("Times New Roman"),
   lang: "en",
@@ -8,104 +8,98 @@
   // fill: navy,
   fallback: false
 )
+#set heading(numbering: (..nums) => nums
+  .pos()
+  .map(str)
+  .last() + "."
+)
 
-// Helper functions
-#let title_section(body) = {
-  [*#body*]
-  linebreak()
-}
+// Asia Pacific University
 
-#let content_section(body) = {
-  parbreak()
-  par(first-line-indent: 36pt)[#body]
-}
+// CT098-3-2-RMCT: Research Methods for Computing and Technology
+
+// Assoc. Prof. Ts. Dr. Tan Chin Ike
+
+// #datetime.today().display("[month repr:long] [day], [year]")
 
 // ======================================
 // Content start
 // ======================================
 
 // Cover page
-#align(horizon + center)[
-  = Exploring Deep Learning Approaches for Real-Time Interactive Character Animation
-  #linebreak()
-  Cheng Yi Heng
+// TODO: Create cover page!
 
-  Asia Pacific University
-
-  CT098-3-2-RMCT: Research Methods for Computing and Technology
-
-  Assoc. Prof. Ts. Dr. Tan Chin Ike
-
-  #datetime.today().display("[month repr:long] [day], [year]")
-]
-
-#pagebreak()
 // ======================================
 // Content page start
 // ======================================
+#align(center)[
+  #heading(numbering: none)[
+    Exploring Deep Learning Approaches for Real-Time Interactive Character Animation
+  ]
+  #linebreak()
+  Yi Heng Cheng
 
-#title_section[Abstract]
-#content_section[
-  Deep learning, in particular, neural networks has proven to be capable of solving a wide variety of complex tasks. Multiple research on deep learning based approach for character animation has been proposed to utilize the enormous learning capabilities of neural networks for generating dynamic animation for real-time interactive applications like games. This article explores a variety of deep learning approaches towards interactive character animation. Each method was investigated based on their strengths, limitations, and novel contributions. A comparison were also performed based on their evaluation results.
-// TODO: Conclusion
+  #link("mailto:voxell.technologies@gmail.com")
 ]
-
-#content_section[*Keywords:* Character Animation, Deep Learning, Motion Matching]
 
 #show: rest => columns(2, rest)
 
-#title_section[Introduction]
-#content_section[
-  /*
-  1. Background/History
-    - Skinning
-    - Keyframes
-    - State machine
-    - IK
-  2. Types of deep learning approaches
-    - Physics based (learn the physics world while mimicking animation data)
-    - Non-physics based (learn purely from animation data)
-  3. Mini summary?
-  */
-  Interactive character animations are usually carried out through skeletal motions. This is achieved using a technique called skinning, which deforms the surface of the character through bone transformations, particularly the position, orientation, and sometimes the scale of the bones @skinning-techniques.
-]
+*_Abstract_--- Deep learning, in particular, neural networks has proven to be capable of solving a wide variety of complex tasks. Multiple research on deep learning based approach for character animation has been proposed to utilize the enormous learning capabilities of neural networks for generating dynamic animation for real-time interactive applications like games. This article explores a wide variety of deep learning approaches towards interactive character animation. Each method was investigated based on their strengths, limitations, and novel contributions. A comparison were also performed based on their evaluation results.*
+// TODO: Conclusion
 
-#title_section[Problem Statement]
-#content_section[
+*Keywords:* Character Animation, Deep Learning
+
+=== Introduction
+
+/*
+1. Background/History
+  - Skinning
+  - Keyframes
+  - State machine
+  - IK
+2. Types of deep learning approaches
+  - Physics based (learn the physics world while mimicking animation data)
+  - Non-physics based (learn purely from animation data)
+3. Mini summary?
+*/
+Interactive character animations are typically carried out through skeletal motions of an articulated figure. This is achieved using a technique called skinning, which deforms the surface of the character based on bone transformations, particularly the position, orientation, and sometimes the scale of the bones @rumman2016state. Animation software like Blender allow animators to author animations using keyframes. Each keyframe stores a snapshot of a character pose which consists of multiple bone transforms. When an animation is being played during runtime, the software interpolates between these keyframes, producing a fluid motion.
+
+Relying soley on manual animation authoring can be extremely inefficient. Motion capture was widely used during the process of animation authoring. Motion capture generates animations by tracking and recording moving objects in the physical space @menolotto2020motion. The raw data from motion capture will then be cleaned and refined by animators before it is being used in production. In addition, inverse kinematics can also be used to generate runtime animation overrides such as orienting the head towards an interest point or positioning the hands on an object correctly @rose2001artist.
+
+=== Problem Statement
   /*
   1. Traditional state machine approach is very manual. Tedious for artists to craft a well made animation.
   */
-  The traditional approach of animation authoring consists of 2 main steps:
-  1. Prepare a set of looping or one off animations.
-  2. Create a state machine that maps user intentions to the desired animations.
-  This approach is straightforward and simple to implement, however, it does not scale well and is not robust to changes. It also requires a huge amount of manual labor to develop a decent looking animation system.
-]
+The traditional approach of animation authoring for real-time interactive scenarios consists of the following steps:
++ Prepare a set of looping or one off animations.
++ Create a state machine that maps user intentions to the desired animations.
 
-#title_section[Research Aims]
-#content_section[
-  The aim of this research is to explore deep learning techniques for producing realistic character animation that can react to dynamic environmental factors such as terrain changes and user interactions.
+This approach is straightforward and simple to implement, however, it does not scale well and is not robust to changes. It also requires a huge amount of manual labor to develop a decent looking animation system.
 
-  - Evaluate the strengths and weaknesses of different deep learning approaches in character animation.
-  - Comparison of different deep learning techniques for character animation.
-  - Exploring ways for incorporating this technique into real-time application development.
-]
+=== Research Aims
+The aim of this research is to explore the potential of deep learning techniques for producing character animation that can react realistically to dynamic environmental factors such as terrain changes and user interactions.
 
-#title_section[Research Questions and Objectives]
-#content_section[
-  1. How does deep learning contribute to the enhancement of character animation in interactive environments?
-  2. What are the types of deep learning techniques for character animation?
-  3. What is the impact of deep learning in real-time interactive character animation industry?
-  // 3. How can these deep learning methods be incorporated into the modern game development pipeline?
-]
 
-#title_section[Research Significance]
-#content_section[#lorem(50)]
+=== Research Objectives
++ Evaluate the strengths and weaknesses of different deep learning approaches in character animation.
++ Comparison of different deep learning techniques for character animation.
++ Exploring ways for incorporating this technique into real+time application development.
 
-#title_section[Proposed System Overview]
-#content_section[#lorem(50)]
+=== Research Questions
 
-#title_section[Conclusion]
-#content_section[#lorem(30)]
++ How does deep learning contribute to the enhancement of character animation in interactive environments?
++ What are the types of deep learning techniques for character animation?
++ What is the impact of deep learning in real-time interactive character animation industry?
+// + How can these deep learning methods be incorporated into the modern game development pipeline?
+
+=== Research Significance
+#lorem(50)
+
+=== Overview of the Proposed System
+#lorem(50)
+
+=== Conclusion
+#lorem(30)
 
 #set par(first-line-indent: 0pt)
 
@@ -113,5 +107,5 @@
 // Bibliography start
 // ======================================
 
-#title_section[References]
+=== References
 #bibliography("citation.bib", title: none, full: true, style: "apa")
