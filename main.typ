@@ -70,7 +70,7 @@ Relying soley on manual animation authoring can be extremely inefficient. Motion
 
 Runtime usage of animations is normally done using some form of state machine (e.g. finite state machine or hierarchical state machine). Developers were tasked to manually map a diverse set of animations to their target states, allowing the character to react accordingly to different scenarios that may happen during runtime. This method does not adapt well to development changes, adding a new state might result in significant modifications on the existing state graph. To address this problem, motion matching was proposed by #cite(<buttner2015motion>, form: "prose"), which opens the possibility of using unstructured animation data. This method performs a search from a large database to find an animation sequence that best fit the current context, namely, the current pose and the current trajectory of the character.
 
-In recent years, deep learning techniques such as the Transformer neural network has proven to be capable of learning large unstructured data and construct pattern to perform human level complex tasks such as language translation @vaswani2017attention. This ability 
+In recent years, deep learning techniques such as the Transformer neural network has proven to be capable of learning large unstructured data and construct pattern to perform human level complex tasks such as language translation @vaswani2017attention. This ability maps surprisingly well to the animation problem.
 
 = Problem Statement
 
