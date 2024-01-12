@@ -49,11 +49,11 @@
 
 #show: rest => columns(2, rest)
 
-*_Abstract_--- Deep learning, in particular, neural networks has proven to be capable of solving a wide variety of complex tasks. Multiple research on deep learning based approach for character animation has been proposed to utilize the enormous learning capabilities of neural networks for generating dynamic animation for real-time interactive applications like games. This research explores a wide variety of deep learning approaches towards interactive character animation. A total of 3 different methods (motion matching based, reinforcement learning, and other deep learning methods) was investigated based on their strengths, limitations, and novel contributions. A comparison were also performed based on their evaluation results. Throughout the research, we found that the use of deep learning can drastically improve the quality of runtime animation in dynamic settings. Neural networks are capable of adapting to unseen data, filling in the gaps where needed, and even react to the physical environment accurately.*
+*_Abstract_--- Deep learning, in particular, neural networks has proven to be capable of solving a wide variety of complex tasks. Multiple research on deep learning based approach for character animation has been proposed to utilize the enormous learning capabilities of neural networks for generating dynamic animation for real-time interactive applications like games. This research explores a wide variety of deep learning approaches towards interactive character animation. A total of 3 different methods (motion matching based, reinforcement learning, and pose generation) was investigated based on their strengths, limitations, and novel contributions. A comparison were also performed based on their evaluation results. Throughout the research, we found that the use of deep learning can drastically improve the quality of runtime animation in dynamic settings. Neural networks are capable of adapting to unseen data, filling in the gaps where needed, and even react to the physical environment accurately.*
 
 *_Index Terms_*
 
-Character Animation, Machine Learning, Neural Networks, Interactive, Real-time
+Character Interactions, Locomotion, Neural Networks, Motion Matching
 
 = Introduction
 
@@ -125,6 +125,10 @@ Real-time interactive character animation contributes largely into the immersion
 // ======================================
 // Bibliography start
 // ======================================
+
+#show heading.where(level: 1) : it => block[
+  #text(size: 12pt)[#it.body]
+]
 
 = References
 #bibliography("citation.bib", title: none, full: true, style: "apa")
