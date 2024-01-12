@@ -21,20 +21,21 @@
   #text(size: 12pt, style: "italic", weight: "regular")[#it]
 ]
 
-// Asia Pacific University
+// Cover page
 
-// CT098-3-2-RMCT: Research Methods for Computing and Technology
+#text(weight: "bold", size: 24pt)[Asia Pacific University]
 
-// Assoc. Prof. Ts. Dr. Tan Chin Ike
+CT098-3-2-RMCT: Research Methods for Computing and Technology
 
-// #datetime.today().display("[month repr:long] [day], [year]")
+Assoc. Prof. Ts. Dr. Tan Chin Ike
+
+#datetime.today().display("[month repr:long] [day], [year]")
+
+#pagebreak()
 
 // ======================================
 // Content start
 // ======================================
-
-// Cover page
-// TODO: Create cover page!
 
 // ======================================
 // Content page start
