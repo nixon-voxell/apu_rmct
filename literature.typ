@@ -21,20 +21,33 @@
   #text(size: 12pt, style: "italic", weight: "regular")[#it]
 ]
 
-// Asia Pacific University
-
-// CT098-3-2-RMCT: Research Methods for Computing and Technology
-
-// Assoc. Prof. Ts. Dr. Tan Chin Ike
-
-// #datetime.today().display("[month repr:long] [day], [year]")
-
-// ======================================
-// Content start
-// ======================================
-
 // Cover page
-// TODO: Create cover page!
+
+#align(horizon)[
+  #align(center)[
+    #image("apu_logo.png", width: 200pt)
+
+    *INDIVIDUAL ASSIGNMENT*
+
+    *RESEARCH METHODS FOR COMPUTING AND TECHNOLOGY*
+
+    #table(
+      columns: (1fr, 2fr),
+      inset: 10pt,
+      align: horizon,
+
+      align(left)[*Student Name*], align(left)[Cheng Yi Heng],
+      align(left)[*TP Number*], align(left)[TP058994],
+      align(left)[*Intake Code*], align(left)[APU2F2305CGD],
+      align(left)[*Module Code*], align(left)[CT098­3­2­RMCT],
+      align(left)[*Lecturer Name*], align(left)[Assoc. Prof. Ts. Dr. Tan Chin Ike],
+      align(left)[*Hand Out Date*], align(left)[7#super[th] November 2023],
+      align(left)[*Hand In Date*], align(left)[19#super[th] January 2024],
+    )
+  ]
+]
+
+#pagebreak()
 
 // ======================================
 // Content page start
