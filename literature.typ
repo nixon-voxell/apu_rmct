@@ -143,14 +143,26 @@ For example, a character might accidentally get hit by a physical object during 
 A major limitation of physics based animation is the inability to precisely control the artistic intent for achieving specific visual effect.
 Additionally, ensuring computational efficiency while simulating complex physical interactions adds another layer of challenge to the authoring process.
 
-=== Animation Graph
+=== Animation System
 
-Animation graphs are typically used to systematically change the playing animation clip based on the current state.
-In game engines like Unity3D, a state machine graph is used to managed the transition between these states.
-During the transition, a method known as animation blending is used to interpolate between 2 distinct animation clips.
+Multiple animation clips are normally used in interactive environments to create a variety of dynamic motions.
+In a conference talk by #cite(<holden2018character>, form: "prose"), he mentioned that Assassin's Creed Origins had around 15,000 animations in the game.
+These animations are needed to be handled by an animation system to systematically select the correct animation clips to sample depending on the current scenario.
 
-The simplest and fastest form of animation blending is linear interpolation.
-However, using only linear interpolation results in unrealistic rigid transitions.
+Game engines like Unity3D uses a hierarchical state machine (HSM) graph to control the sampling of animation clips and the transition between them.
+This allows developers to divide complex systems into smaller isolated modules @berg2023animation.
+During runtime, the animation system will traverse the state machine graph and subsequently transition to the animation clip it reaches.
+
+In some cases, animators would also like to mix and match different animation clips together. For example, an in between animation of walking and jogging to produce a slow jog.
+This can be achieved using a method called blend trees @berg2023animation.
+
+Another technique known as motion blending is also used to apply motion trajectories onto the rig, based on a weighted sum of multiple animation clips @menardais2004motion.
+This can create interesting motion dynamics like a walking animation clip towards the lower body part and a punching animation towards the upper body part.
+// Animation graphs are typically used to systematically change the playing animation clip based on the current state.
+// During the transition, a method known as animation blending is used to interpolate between 2 distinct animation clips.
+
+// The simplest and fastest form of animation blending is linear interpolation.
+// However, using only linear interpolation results in unrealistic rigid transitions.
 
 == Deep Learning in Animation
 /*
@@ -164,6 +176,8 @@ Deep Learning for Animation
 - Reinforcement learning based
   - Adversarial skill embeddings (ASE)
 */
+
+The key idea of using neural networks is to attempt to generalize the problem and solve the scalability issue of many traditional animation systems.
 
 == The Hybrid Approach
 /*
