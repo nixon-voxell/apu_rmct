@@ -62,15 +62,43 @@
 
 #show: rest => columns(2, rest)
 
-*_Abstract_--- Xxx*
+// *_Abstract_--- Xxx*
 
-*_Index Terms_*
+// *_Index Terms_*
 
-Character Animation, Deep Learning, Neural Networks, Interactive, Real-time
+// Character Animation, Deep Learning, Neural Networks, Interactive, Real-time
 
-= Introduction
+// = Introduction
 
 = Literature Review
+
+== Introduction
+
+This review is divided into several sections.
+The first section will discuss about the evolution of animation.
+The following section will be a deep dive into the research that has been done to create the technologies needed to make interactive character animation possible.
+Finally, we look into the recent advancements of deep learning that could possibly propel the interactive character animation standards.
+
+== Evolution of Animation
+
+Animation in its simplest form is a sequence of actions that when played in a sequential manner, produces an illusion of movement.
+In the beginning, all animations are offline or pre-recorded in some form before displaying it to its audience.
+As oppose to many real-time animations we see today, especially in games, offline animations are not interactable, and thus only fits the purpose of the film industry.
+
+Animation production started off with hand-drawn animations.
+From the 1940s to the 1980s, hand-drawn animations was the main mode of output in the animation industry @lamotte2022discovering.
+An animation is produced frame-by-frame, requiring prodigious quanitites of labor for the construction of a 24 frames per second film @baecker1969picture.
+It was slow and ineffective, but it was the only choice given the state of the technology at that time.
+
+The emergence of computer-assisted animation started gaining popularity during the 1970s @lamotte2022discovering.
+Computer graphics systems strive to create a better experience to replace the drawing and painting process, widely known as the "Ink and Paint" process at that time.
+TicTacToon was a method that proposes a paperless 2D animation production line @fekete1995tictactoon.
+Motion capture was also introduced using potentiometers to track the movement of the human body @sturman1994brief @gleicher1999animation.
+
+Starting around 2000s, purely computer generated images (CGI) has started to become possible.
+Computer graphics systems had evolved to be able to render 3D objects.
+A tremendous improvement in CGI can be seen from the film _Tron: Legacy_ that was released in December 2010 and in production since 2009.
+There were also 3D released games with 3D interactive animations like _Halo: Combat Evolved_, _Gears of War_, and _Half-Life_.
 
 == Interactive Character Animation
 /*
@@ -81,27 +109,26 @@ Character Animation, Deep Learning, Neural Networks, Interactive, Real-time
 */
 
 Interactive character animation is made up of multiple underlying technologies.
-At its core, it consists of the presentation component and the state management component.
-The end goal of the presentation component is to provide a visual feedback of the animation towards the user.
-The presentation component heavily depends on the state management component which decides what pose to be displayed at a given point in time.
-Managing a state machine well can be a day and night difference between having a good or bad animation response for a given scenario.
+It is a subset of animation where characters are typically animated using a rig which deforms a mesh made up of triangles that is rendered onto the screen in real-time.
+The end goal is to create a system that is capable of providing visual feedback of character movements for users in real-time applications.
 
 === Mesh Skinning
 
-Skinning is the process of performing mesh deformation through the movement of several skeletons.
-It plays a major role in the presentation component.
+Skinning is the process of performing mesh deformation according to a function of skeletal poses @rumman2016state.
+In character animation, it is important to adopt a skinning method that is high in fidelity and performance.
+In this section, we will explore the various methods of skinning that had been developed over the years as well as their pros and cons.
 
-Linear Blend Skinning (LBS) is a commonly used technique in character animation where each vertex of the character mesh is influenced by a weighted sum of the transformations of nearby bones @lander1998skin.
+Linear Blend Skinning (LBS) is a commonly used method in character animation where each vertex of the character mesh is influenced by a weighted sum of the transformations of nearby bones @lander1998skin.
 It is being used in _AAA_ game engines like Unity3D and Unreal Engine.
 LBS is known for its fast and simple algorithm that maps advantageously to the graphics hardware.
 
-Spherical Blend Skinning (SBS) is another form of skinning technique that employs spherical interpolation to smoothly blend between bone transformations @kavan2005spherical.
+Spherical Blend Skinning (SBS) is another form of skinning method that employs spherical interpolation to smoothly blend between bone transformations @kavan2005spherical.
 SBS aims to solve the "lost of volume" artifact that LBS brings despite its efficient algorithm.
 
 To solve the computational and memory overhead that SBS brings, #cite(<kavan2007skinning>, form: "prose") propose Dual Quaternion Blending (DQB).
 DQB uses dual quaternions to represent both translation and rotation, allowing for more accurate and natural deformations of the character mesh.
 Unlike SBS, it does not require additional memory to cache rotation centers.
-The DQB technique is also extremely efficient.
+The DQB method is also extremely efficient.
 However, DBQ comes with a limitation, it only supports rigid transformation and is not suitable for scaling or shearing effects.
 
 === Inverse Kinematics
@@ -131,12 +158,12 @@ At its current state, there is a total of 4 main categories towards IK:
 
   The hybrid method is simply a way of combining 2 or more different IK methods into a single solution.
 
-=== Physics Based Animation
+=== Physics Based Character Animation
 
-Physics based animation offers a completely new solution for developers to prioritize physics accuracy over animation precision.
+Physics based character animation offers a completely new solution for developers to prioritize physics accuracy over animation precision.
 It forces characters to obey the laws of physics like preventing collisions between collidable objects and interacting with external forces such as gravity, pressure, etc @ye2016physics.
 
-Authoring physics based animation can be extremely hard.
+Authoring physics based character animation can be extremely hard.
 This is due to the unpredictability of the physical world.
 For example, a character might accidentally get hit by a physical object during runtime, resulting in unexpected movements or behaviors that can disrupt the intended animation sequence.
 
@@ -149,20 +176,27 @@ Multiple animation clips are normally used in interactive environments to create
 In a conference talk by #cite(<holden2018character>, form: "prose"), he mentioned that Assassin's Creed Origins had around 15,000 animations in the game.
 These animations are needed to be handled by an animation system to systematically select the correct animation clips to sample depending on the current scenario.
 
-Game engines like Unity3D uses a hierarchical state machine (HSM) graph to control the sampling of animation clips and the transition between them.
+Game engines like Unity3D uses a hierarchical state machine (HSM) graph, shown in @mechanim. It controls the sampling of animation clips and the transition between them.
+
+#figure(
+  image("./images/unity mechanim.jpg"),
+  caption: [Unity's Mechanim],
+) <mechanim>
+
 This allows developers to divide complex systems into smaller isolated modules @berg2023animation.
 During runtime, the animation system will traverse the state machine graph and subsequently transition to the animation clip it reaches.
 
 In some cases, animators would also like to mix and match different animation clips together. For example, an in between animation of walking and jogging to produce a slow jog.
 This can be achieved using a method called blend trees @berg2023animation.
 
-Another technique known as motion blending is also used to apply motion trajectories onto the rig, based on a weighted sum of multiple animation clips @menardais2004motion.
-This can create interesting motion dynamics like a walking animation clip towards the lower body part and a punching animation towards the upper body part.
-// Animation graphs are typically used to systematically change the playing animation clip based on the current state.
-// During the transition, a method known as animation blending is used to interpolate between 2 distinct animation clips.
+Another method known as motion blending is also used to apply motion trajectories onto the rig, based on a weighted sum of multiple animation clips @menardais2004motion.
 
-// The simplest and fastest form of animation blending is linear interpolation.
-// However, using only linear interpolation results in unrealistic rigid transitions.
+#figure(
+  image("./images/unity mechanim blend tree.png"),
+  caption: [Blend tree.],
+) <blendtree>
+
+This can create interesting motion dynamics like a walking animation clip towards the lower body part and a punching animation towards the upper body part.
 
 == Deep Learning in Animation
 /*
@@ -177,15 +211,13 @@ Deep Learning for Animation
   - Adversarial skill embeddings (ASE)
 */
 
+=== A Brief History of Deep Learning
+
+=== Using Deep Learning to Drive Character Animation
+// Learned motion matching
+// KNN for motion matching
+
 The key idea of using neural networks is to attempt to generalize the problem and solve the scalability issue of many traditional animation systems.
-
-== The Hybrid Approach
-/*
-Hybrid Approach
-
-- KNN for motion matching
-- Learned motion matching
-*/
 
 = Methodology
 
@@ -202,7 +234,9 @@ Hybrid Approach
 
 = Conclusion
 
-Real-time interactive character animation contributes largely into the immersion of interactive applications such as games. Constructing such system that can react realistically and naturally to dynamic environments is extremely challenging without incorporating machine learning components. Thanks to the adoption of neural networks and the abundance of accelerated computing of GPUs in recent years, the animation industry has been able to benefit from it by harnessing the enormous learning capability of neural networks to revolutionize the interactive application industry.
+Real-time interactive character animation contributes largely into the immersion of interactive applications such as games.
+Constructing such system that can react realistically and naturally to dynamic environments is extremely challenging without incorporating machine learning components.
+Thanks to the adoption of neural networks and the abundance of accelerated computing of GPUs in recent years, the animation industry has been able to benefit from it by harnessing the enormous learning capability of neural networks to revolutionize the interactive application industry.
 
 #set par(first-line-indent: 0pt)
 
